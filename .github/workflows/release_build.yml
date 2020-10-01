@@ -48,7 +48,7 @@ jobs:
           "Run-$env:GITHUB_RUN_NUMBER"          
 
       # Uses the remote self-host to build the ICS
-      - name: Build ICS-Base Specification
+      - name: Build Specification
         run:  >
           python Build\specbuilder.py $env:CONFIG_FILE
           "$env:JDF_FILE_NAME $env:JDF_VERSION $env:VERSION"
