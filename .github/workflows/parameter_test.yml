@@ -1,0 +1,56 @@
+# This only test parameters and is only invoked manually
+
+name: Snapshot Build
+# The VERSION is the main release number i.e. 1.7 or 2.1
+env:      
+  JDF_VERSION:    '1.7'
+  JDF_FILE_NAME:  ICS JDF MIS
+  CONFIG_FILE:    ICS_JDF_MIS.ini
+
+# Controls when the action will run. 
+on:
+  workflow_dispatch:
+    inputs:
+      tags:
+        description: 'Manual Run'  
+    
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: [self-hosted, framemaker-2015]
+    
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout source
+        uses: actions/checkout@v2
+        
+      # New get date
+      -name: Get current time/date
+       uses: srfrnk/current-time@master
+       id: current-time
+       with:
+         format: YYYMMDD
+ 
+      # Get the date 
+      #- name: Get date
+      #  run: echo "::set-env name=NOW::$(date -UFormat '%Y%m%d')"
+
+      # Build test - only required to 'see' github's variables.
+      - name: Check Build Variables
+        env:
+          NOW: "${{ steps.current-time.outputs.formattedTime }}"
+        run:  >
+          python Build\buildtest.py $env:CONFIG_FILE
+          "$env:JDF_FILE_NAME $env:JDF_VERSION Draft-$env:NOW Build-$env:GITHUB_RUN_NUMBER"
+          "$env:JDF_VERSION Draft-$env:NOW Build-$env:GITHUB_RUN_NUMBER"
+          "Run-$env:GITHUB_RUN_NUMBER"
+
+      # Uses the remote self-host to build the ICS
+      # No actual build
+
+      # Upload any artefact produced.
+      # So no artifacts.
+          
