@@ -32,7 +32,7 @@ jobs:
         uses: srfrnk/current-time@master
         id: current-time
         with:
-          format: YYYMMDD
+          format: YYYYMMDD
  
       # Get the date 
       #- name: Get date
