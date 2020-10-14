@@ -1,4 +1,4 @@
-# This only test parameters and is only invoked manually
+# This only tests parameters and is only invoked manually
 
 name: Parameter Test
 # The VERSION is the main release number i.e. 1.7 or 2.1
@@ -28,11 +28,11 @@ jobs:
         uses: actions/checkout@v2
         
       # New get date
-      -name: Get current time/date
-       uses: srfrnk/current-time@master
-       id: current-time
-       with:
-         format: YYYMMDD
+      - name: Get current time/date
+        uses: srfrnk/current-time@master
+        id: current-time
+        with:
+          format: YYYMMDD
  
       # Get the date 
       #- name: Get date
