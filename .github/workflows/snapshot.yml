@@ -48,7 +48,7 @@ jobs:
           filename:     ${{env.JDF_FILE_NAME}} 
           configfile:   ${{env.CONFIG_FILE}}
         run: >
-          python Build\buildtest.py $env:configfile
+          python Build\specbuilder.py $env:configfile
           "$env:filename $env:version DRAFT-$env:NOW Build-$env:GITHUB_RUN_NUMBER"
           "$env:version DRAFT-$env:NOW Build-$env:GITHUB_RUN_NUMBER"
           "Run-$env:GITHUB_RUN_NUMBER"
