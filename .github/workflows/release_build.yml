@@ -1,12 +1,3 @@
-# This is the basic workflow to build ICS documentation
-
-name: Release Build
-# The VERSION is the main release number i.e. 1.7 or 2.1
-env:      
-  JDF_VERSION:    '1.7'
-  JDF_FILE_NAME:  ICS JDF MIS
-  JDF_CONFIG_FILE:    ICS_JDF_MIS.ini
-
 # This is the basic workflow to build release documentation
 
 name: Release Build
